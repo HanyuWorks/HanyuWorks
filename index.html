@@ -39,6 +39,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -56,6 +58,22 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        .animate-pulse-custom {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        .max-w-7xl {
+            max-width: 100rem !important;
+        }        
     </style>
 </head>
 <body class="bg-white antialiased selection:bg-teal-100 selection:text-teal-900">
@@ -83,14 +101,14 @@
 
                 <!-- Desktop Nav Links -->
                 <div class="hidden lg:flex items-center space-x-6 text-sm font-medium text-slate-600">
-                    <a href="#ly-do" class="hover:text-teal-700 transition">Bối cảnh & Đổi mới</a>
-                    <a href="#luong-ai" class="hover:text-teal-700 transition">Luồng Xử Lý AI</a>
-                    <a href="#demosim" class="hover:text-teal-700 transition">Thử nghiệm AI</a>
+                    <a href="#ly-do" class="hover:text-teal-700 transition">Bối cảnh</a>
+                    <a href="#luong-ai" class="hover:text-teal-700 transition">Công nghệ AI</a>
+                    <a href="#demosim" class="hover:text-teal-700 transition">Thử nghiệm</a>
                     <a href="#career-packs" class="hover:text-teal-700 transition">Career Packs</a>
                     <a href="#b2b" class="hover:text-teal-700 transition">B2B Dashboard</a>
-                    <a href="#swot" class="hover:text-teal-700 transition">Phân tích SWOT</a>
+                    <a href="#swot" class="hover:text-teal-700 transition">SWOT</a>
                     <a href="#bang-gia" class="hover:text-teal-700 transition">Bảng giá</a>
-                    <a href="#tiendo" class="hover:text-teal-700 transition">Lộ trình 10T</a>
+                    <a href="#tiendo" class="hover:text-teal-700 transition">Lộ trình</a>
                     <a href="#doi-ngu" class="hover:text-teal-700 transition">Đội ngũ</a>
                 </div>
 
@@ -120,10 +138,10 @@
             <a href="#demosim" class="block py-2 text-teal-700 font-semibold">Trải nghiệm AI Simulator</a>
             <a href="#career-packs" class="block py-2 text-slate-700 font-medium">Kho 200 Kịch bản Career Packs</a>
             <a href="#b2b" class="block py-2 text-slate-700 font-medium">Giải pháp & Dashboard B2B</a>
-            <a href="#swot" class="block py-2 text-slate-700 font-medium">Phân tích SWOT & Tác động KH-XH</a>
-            <a href="#bang-gia" class="block py-2 text-slate-700 font-medium">Bảng giá & Dự toán Kinh phí</a>
+            <a href="#swot" class="block py-2 text-slate-700 font-medium">Phân tích SWOT & Tác động</a>
+            <a href="#bang-gia" class="block py-2 text-slate-700 font-medium">Bảng giá & Dự toán</a>
             <a href="#tiendo" class="block py-2 text-slate-700 font-medium">Lộ trình triển khai 10 tháng</a>
-            <a href="#doi-ngu" class="block py-2 text-slate-700 font-medium">Đội ngũ nghiên cứu & Giảng viên</a>
+            <a href="#doi-ngu" class="block py-2 text-slate-700 font-medium">Đội ngũ nghiên cứu</a>
         </div>
     </nav>
 
@@ -285,7 +303,7 @@
                 </div>
             </div>
 
-            <!-- BẢNG SO SÁNH ĐỐI SÁNH GIẢI PHÁP HIỆN CÓ (TABLE FROM DOCS SECTION 6.2) -->
+            <!-- BẢNG SO SÁNH ĐỐI SÁNH GIẢI PHÁP HIỆN CÓ -->
             <div class="mt-8 bg-slate-50 rounded-2xl border border-slate-200 p-6 custom-shadow">
                 <h3 class="text-lg font-bold text-slate-900 mb-4 text-center">Bảng Đối Sánh HanyuWorks Với Các Giải Pháp Hiện Có Trên Thị Trường</h3>
                 <div class="overflow-x-auto">
@@ -350,7 +368,7 @@
         </div>
     </section>
 
-    <!-- KIẾN TRÚC CÔNG NGHỆ & LUỒNG XỬ LÝ AI (SECTION 4.1 & 4.2 IN DOCS) -->
+    <!-- KIẾN TRÚC CÔNG NGHỆ & LUỒNG XỬ LÝ AI -->
     <section id="luong-ai" class="py-16 bg-slate-900 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12">
@@ -438,6 +456,7 @@
                             <option value="1688">Kịch bản 1: Sourcing 1688 - Thương lượng MOQ & Giá mẫu</option>
                             <option value="logistics">Kịch bản 2: Logistics - Khiếu nại trễ thông quan Bằng Tường</option>
                             <option value="interview">Kịch bản 3: Phỏng vấn vị trí Buyer / Sourcing Manager</option>
+                            <option value="oem">Kịch bản 4: Sản xuất OEM - Xử lý lỗi chất lượng lô hàng</option>
                         </select>
                     </div>
                 </div>
@@ -476,7 +495,7 @@
         </div>
     </section>
 
-    <!-- KHO CAREER PACKS (200 KỊCH BẢN CHUYÊN NGÀNH) -->
+    <!-- KHO CAREER PACKS (4 GÓI CHI TIẾT) -->
     <section id="career-packs" class="py-16 bg-white border-t border-slate-200/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
@@ -497,69 +516,81 @@
             <!-- Career Packs Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="packs-grid">
                 <!-- Card 1 -->
-                <div class="pack-card bg-white rounded-2xl border border-slate-200 overflow-hidden custom-shadow hover:border-teal-400 transition" data-cat="sourcing">
+                <div class="pack-card bg-white rounded-2xl border border-slate-200 overflow-hidden custom-shadow hover:border-teal-400 transition flex flex-col" data-cat="sourcing">
                     <div class="p-5 border-b border-slate-100 bg-gradient-to-r from-teal-50 to-white">
                         <span class="bg-teal-100 text-teal-800 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Career Pack 1</span>
                         <h3 class="text-base font-bold text-slate-900 mt-2">Sourcing 1688 & Tìm Nguồn Hàng Trung Quốc</h3>
                         <p class="text-xs text-slate-500 mt-1">Dành cho chủ shop, purchasing agent, buyer.</p>
                     </div>
-                    <div class="p-5 space-y-3 text-xs text-slate-600">
-                        <div class="flex items-center gap-2"><i class="fa-solid fa-check text-teal-600"></i> Thương lượng MOQ, xin giá mẫu 试订单</div>
-                        <div class="flex items-center gap-2"><i class="fa-solid fa-check text-teal-600"></i> Xử lý hàng lỗi, khiếu nại hoàn tiền 1688</div>
-                        <div class="flex items-center gap-2"><i class="fa-solid fa-check text-teal-600"></i> Corpus: 阶梯价, 开模, 包邮, 补发</div>
-                        <div class="pt-2 flex justify-between items-center text-slate-900 font-bold border-t border-slate-100 text-sm">
-                            <span>299.000 VNĐ <span class="text-xs text-slate-400 font-normal">/ gói vĩnh viễn</span></span>
+                    <div class="p-5 space-y-3 text-xs text-slate-600 flex-1 flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-teal-600"></i> Thương lượng MOQ, xin giá mẫu 试订单</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-teal-600"></i> Xử lý hàng lỗi, khiếu nại hoàn tiền 1688</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-teal-600"></i> Corpus: 阶梯价, 开模, 包邮, 补发</div>
+                        </div>
+                        <div class="pt-3 flex justify-between items-center text-slate-900 font-bold border-t border-slate-100 text-sm mt-3">
+                            <span>299.000 VNĐ <span class="text-xs text-slate-400 font-normal">/ gói</span></span>
+                            <button onclick="openPurchaseModal('Sourcing 1688')" class="text-teal-700 hover:text-teal-800 font-semibold">Mua ngay</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="pack-card bg-white rounded-2xl border border-slate-200 overflow-hidden custom-shadow hover:border-teal-400 transition" data-cat="xnk">
+                <div class="pack-card bg-white rounded-2xl border border-slate-200 overflow-hidden custom-shadow hover:border-teal-400 transition flex flex-col" data-cat="xnk">
                     <div class="p-5 border-b border-slate-100 bg-gradient-to-r from-teal-50 to-white">
                         <span class="bg-blue-100 text-blue-800 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Career Pack 2</span>
                         <h3 class="text-base font-bold text-slate-900 mt-2">Nghiệp Vụ Xuất Nhập Khẩu & Đàm Phán L/C</h3>
                         <p class="text-xs text-slate-500 mt-1">Dành cho Chuyên viên XNK, Sales Export, Chứng từ.</p>
                     </div>
-                    <div class="p-5 space-y-3 text-xs text-slate-600">
-                        <div class="flex items-center gap-2"><i class="fa-solid fa-check text-teal-600"></i> Đàm phán Incoterms (FOB, CIF, EXW)</div>
-                        <div class="flex items-center gap-2"><i class="fa-solid fa-check text-teal-600"></i> Thanh toán quốc tế L/C, T/T 30/70, B/L</div>
-                        <div class="flex items-center gap-2"><i class="fa-solid fa-check text-teal-600"></i> Corpus: 信用证, 提单, 报关, 离岸价</div>
-                        <div class="pt-2 flex justify-between items-center text-slate-900 font-bold border-t border-slate-100 text-sm">
-                            <span>299.000 VNĐ <span class="text-xs text-slate-400 font-normal">/ gói vĩnh viễn</span></span>
+                    <div class="p-5 space-y-3 text-xs text-slate-600 flex-1 flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-teal-600"></i> Đàm phán Incoterms (FOB, CIF, EXW)</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-teal-600"></i> Thanh toán quốc tế L/C, T/T 30/70, B/L</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-teal-600"></i> Corpus: 信用证, 提单, 报关, 离岸价</div>
+                        </div>
+                        <div class="pt-3 flex justify-between items-center text-slate-900 font-bold border-t border-slate-100 text-sm mt-3">
+                            <span>299.000 VNĐ <span class="text-xs text-slate-400 font-normal">/ gói</span></span>
+                            <button onclick="openPurchaseModal('Nghiệp Vụ Xuất Nhập Khẩu')" class="text-teal-700 hover:text-teal-800 font-semibold">Mua ngay</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 3 -->
-                <div class="pack-card bg-white rounded-2xl border border-slate-200 overflow-hidden custom-shadow hover:border-teal-400 transition" data-cat="logistics">
+                <div class="pack-card bg-white rounded-2xl border border-slate-200 overflow-hidden custom-shadow hover:border-teal-400 transition flex flex-col" data-cat="logistics">
                     <div class="p-5 border-b border-slate-100 bg-gradient-to-r from-teal-50 to-white">
                         <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Career Pack 3</span>
                         <h3 class="text-base font-bold text-slate-900 mt-2">Logistics & Giao Nhận Hải Quan Biên Giới</h3>
                         <p class="text-xs text-slate-500 mt-1">Dành cho nhân viên Ops Logistics, quản lý kho biên.</p>
                     </div>
-                    <div class="p-5 space-y-3 text-xs text-slate-600">
-                        <div class="flex items-center gap-2"><i class="fa-solid fa-check text-teal-600"></i> Xử lý tắc biên Bằng Tường, chậm thông quan</div>
-                        <div class="flex items-center gap-2"><i class="fa-solid fa-check text-teal-600"></i> Đàm phán cước tàu, phí lưu kho demurrage</div>
-                        <div class="flex items-center gap-2"><i class="fa-solid fa-check text-teal-600"></i> Corpus: 订舱, 清关, 滞港费, 拖车</div>
-                        <div class="pt-2 flex justify-between items-center text-slate-900 font-bold border-t border-slate-100 text-sm">
-                            <span>299.000 VNĐ <span class="text-xs text-slate-400 font-normal">/ gói vĩnh viễn</span></span>
+                    <div class="p-5 space-y-3 text-xs text-slate-600 flex-1 flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-teal-600"></i> Xử lý tắc biên Bằng Tường, chậm thông quan</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-teal-600"></i> Đàm phán cước tàu, phí lưu kho demurrage</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-teal-600"></i> Corpus: 订舱, 清关, 滞港费, 拖车</div>
+                        </div>
+                        <div class="pt-3 flex justify-between items-center text-slate-900 font-bold border-t border-slate-100 text-sm mt-3">
+                            <span>299.000 VNĐ <span class="text-xs text-slate-400 font-normal">/ gói</span></span>
+                            <button onclick="openPurchaseModal('Logistics & Giao Nhận')" class="text-teal-700 hover:text-teal-800 font-semibold">Mua ngay</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 4 -->
-                <div class="pack-card bg-white rounded-2xl border border-slate-200 overflow-hidden custom-shadow hover:border-teal-400 transition" data-cat="factory">
+                <div class="pack-card bg-white rounded-2xl border border-slate-200 overflow-hidden custom-shadow hover:border-teal-400 transition flex flex-col" data-cat="factory">
                     <div class="p-5 border-b border-slate-100 bg-gradient-to-r from-teal-50 to-white">
                         <span class="bg-purple-100 text-purple-800 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Career Pack 4</span>
                         <h3 class="text-base font-bold text-slate-900 mt-2">Quản Lý Sản Xuất OEM & Kiểm Soát QC/QA</h3>
                         <p class="text-xs text-slate-500 mt-1">Dành cho kỹ sư, quản lý xưởng hợp tác chuyên gia Trung Quốc.</p>
                     </div>
-                    <div class="p-5 space-y-3 text-xs text-slate-600">
-                        <div class="flex items-center gap-2"><i class="fa-solid fa-check text-teal-600"></i> Họp giao ban tiến độ, nghiệm thu linh kiện</div>
-                        <div class="flex items-center gap-2"><i class="fa-solid fa-check text-teal-600"></i> Khắc phục sự cố dây chuyền, tỷ lệ lỗi</div>
-                        <div class="flex items-center gap-2"><i class="fa-solid fa-check text-teal-600"></i> Corpus: 良品率, 样品, 交货期, 质检</div>
-                        <div class="pt-2 flex justify-between items-center text-slate-900 font-bold border-t border-slate-100 text-sm">
-                            <span>299.000 VNĐ <span class="text-xs text-slate-400 font-normal">/ gói vĩnh viễn</span></span>
+                    <div class="p-5 space-y-3 text-xs text-slate-600 flex-1 flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-teal-600"></i> Họp giao ban tiến độ, nghiệm thu linh kiện</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-teal-600"></i> Khắc phục sự cố dây chuyền, tỷ lệ lỗi</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-check text-teal-600"></i> Corpus: 良品率, 样品, 交货期, 质检</div>
+                        </div>
+                        <div class="pt-3 flex justify-between items-center text-slate-900 font-bold border-t border-slate-100 text-sm mt-3">
+                            <span>299.000 VNĐ <span class="text-xs text-slate-400 font-normal">/ gói</span></span>
+                            <button onclick="openPurchaseModal('Quản Lý Sản Xuất OEM')" class="text-teal-700 hover:text-teal-800 font-semibold">Mua ngay</button>
                         </div>
                     </div>
                 </div>
@@ -567,112 +598,177 @@
         </div>
     </section>
 
-    <!-- GIẢI PHÁP & DASHBOARD B2B CHO DOANH NGHIỆP -->
-    <section id="b2b" class="py-16 bg-slate-50">
+    <!-- GIẢI PHÁP & DASHBOARD B2B CHO DOANH NGHIỆP (NÂNG CẤP CHI TIẾT) -->
+    <section id="b2b" class="py-16 bg-slate-50 border-t border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="bg-teal-100 text-teal-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Enterprise Solution</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">Hệ Thống Quản Trị Đào Tạo B2B Toàn Diện</h2>
+                <p class="text-slate-600 text-sm mt-2">Minh bạch hóa năng lực nhân sự, tối ưu chi phí đào tạo và chứng minh ROI.</p>
+            </div>
+
+            <!-- B2B Dashboard Full Mockup -->
+            <div class="bg-slate-900 rounded-3xl p-4 sm:p-6 text-slate-100 custom-shadow-lg border border-slate-800">
                 
-                <div class="lg:col-span-5 space-y-5">
-                    <span class="bg-teal-100 text-teal-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Enterprise Solution</span>
-                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Dashboard Quản Trị & Đo Lường Tiến Bộ Nhân Sự</h2>
-                    <p class="text-sm text-slate-600 leading-relaxed">
-                        Cung cấp B2B Enterprise License & Dashboard minh bạch cho doanh nghiệp XNK, Sourcing, Logistics. Giúp HR/Manager phân bổ bài tập theo phòng ban, theo dõi sát thời lượng thực hành và chứng minh hiệu quả đào tạo qua chỉ số Work Chinese Score.
-                    </p>
-
-                    <ul class="space-y-3 text-xs sm:text-sm text-slate-700">
-                        <li class="flex items-start gap-2.5">
-                            <i class="fa-solid fa-circle-check text-teal-600 mt-1"></i>
-                            <span><strong>Giao bài theo phòng ban:</strong> Phân bổ module kịch bản chuẩn cho Purchasing, Ops Logistics, Sales.</span>
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <i class="fa-solid fa-circle-check text-teal-600 mt-1"></i>
-                            <span><strong>May đo Custom B2B Module (35 - 60 triệu VNĐ):</strong> Thiết kế kịch bản độc quyền theo quy trình SOP riêng của doanh nghiệp.</span>
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <i class="fa-solid fa-circle-check text-teal-600 mt-1"></i>
-                            <span><strong>Báo cáo HR tự động:</strong> Xuất dữ liệu định kỳ cho Ban Giám đốc chứng minh ROI đào tạo.</span>
-                        </li>
-                    </ul>
-
-                    <div class="pt-2">
-                        <a href="#bang-gia" class="inline-flex items-center px-6 py-3 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-semibold text-sm transition shadow-md">
-                            Đăng ký License Doanh nghiệp <i class="fa-solid fa-arrow-right ml-2"></i>
-                        </a>
+                <!-- Dashboard Header -->
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-slate-800 gap-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-teal-700 flex items-center justify-center font-bold text-lg">HW</div>
+                        <div>
+                            <div class="text-base font-bold text-white">B2B Portal - Công ty Cổ phần LogiTrans VN</div>
+                            <div class="text-xs text-slate-400">Gói Doanh nghiệp: <strong>25 Licenses Active</strong> | Quản trị viên: HR Manager</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="bg-emerald-900/60 text-emerald-300 text-xs px-3 py-1.5 rounded-full border border-emerald-700/50 flex items-center gap-1">
+                            <i class="fa-solid fa-circle text-[8px]"></i> Hệ thống đang hoạt động
+                        </span>
+                        <button onclick="showExportReport()" class="bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-1.5 rounded-lg border border-slate-700 transition">
+                            <i class="fa-solid fa-file-export mr-1"></i> Xuất báo cáo HR
+                        </button>
                     </div>
                 </div>
 
-                <!-- B2B Dashboard Mockup -->
-                <div class="lg:col-span-7">
-                    <div class="bg-slate-900 rounded-2xl p-5 text-slate-100 custom-shadow-lg border border-slate-800">
-                        <div class="flex items-center justify-between pb-4 border-b border-slate-800">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-8 h-8 rounded-lg bg-teal-700 flex items-center justify-center font-bold text-sm">HW</div>
-                                <div>
-                                    <div class="text-xs font-bold text-white">B2B Portal - Công ty Cổ phần LogiTrans VN</div>
-                                    <div class="text-[10px] text-slate-400">Gói Doanh nghiệp: 25 Licenses Active</div>
-                                </div>
-                            </div>
-                            <span class="bg-emerald-900/60 text-emerald-300 text-[10px] px-2.5 py-1 rounded-full border border-emerald-700/50"><i class="fa-solid fa-circle text-[8px] mr-1"></i> System Active</span>
-                        </div>
-
-                        <!-- Stats Row -->
-                        <div class="grid grid-cols-3 gap-3 my-4">
-                            <div class="bg-slate-800/80 p-3 rounded-xl border border-slate-700">
-                                <div class="text-[10px] text-slate-400">Tổng giờ thực hành Voice</div>
-                                <div class="text-lg font-bold text-teal-400 mt-0.5">342.5 giờ</div>
-                            </div>
-                            <div class="bg-slate-800/80 p-3 rounded-xl border border-slate-700">
-                                <div class="text-[10px] text-slate-400">Tỉ lệ hoàn thành bài</div>
-                                <div class="text-lg font-bold text-emerald-400 mt-0.5">88.4%</div>
-                            </div>
-                            <div class="bg-slate-800/80 p-3 rounded-xl border border-slate-700">
-                                <div class="text-[10px] text-slate-400">ĐTB Work Chinese Score</div>
-                                <div class="text-lg font-bold text-amber-400 mt-0.5">812 / 990</div>
-                            </div>
-                        </div>
-
-                        <!-- Staff progress table simulation -->
-                        <div class="text-xs">
-                            <div class="text-slate-400 font-semibold mb-2 text-[11px] uppercase tracking-wider">Tiến độ nhân sự phòng Sourcing & XNK</div>
-                            <div class="space-y-2">
-                                <div class="bg-slate-800/50 p-2.5 rounded-lg flex items-center justify-between">
-                                    <div class="flex items-center space-x-2">
-                                        <div class="w-7 h-7 rounded-full bg-teal-700 flex items-center justify-center text-[10px] font-bold">NV</div>
-                                        <div>
-                                            <div class="font-medium text-slate-200">Nguyễn Văn An (Sourcing Spec)</div>
-                                            <div class="text-[10px] text-slate-400">Đã hoàn thành 12/15 kịch bản 1688</div>
-                                        </div>
-                                    </div>
-                                    <div class="text-right">
-                                        <span class="text-emerald-400 font-bold">865 Score</span>
-                                        <div class="text-[10px] text-slate-400">Xuất sắc</div>
-                                    </div>
-                                </div>
-
-                                <div class="bg-slate-800/50 p-2.5 rounded-lg flex items-center justify-between">
-                                    <div class="flex items-center space-x-2">
-                                        <div class="w-7 h-7 rounded-full bg-blue-700 flex items-center justify-center text-[10px] font-bold">TH</div>
-                                        <div>
-                                            <div class="font-medium text-slate-200">Trần Thị Hoa (XNK Docs)</div>
-                                            <div class="text-[10px] text-slate-400">Đã hoàn thành 9/15 kịch bản Incoterms</div>
-                                        </div>
-                                    </div>
-                                    <div class="text-right">
-                                        <span class="text-amber-400 font-bold">790 Score</span>
-                                        <div class="text-[10px] text-slate-400">Khá</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                <!-- Stats Row -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-6">
+                    <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
+                        <div class="text-xs text-slate-400 mb-1">Tổng giờ thực hành Voice</div>
+                        <div class="text-2xl font-bold text-teal-400">342.5 <span class="text-sm font-normal">giờ</span></div>
+                        <div class="text-[10px] text-emerald-400 mt-1"><i class="fa-solid fa-arrow-up"></i> +12% so với tháng trước</div>
+                    </div>
+                    <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
+                        <div class="text-xs text-slate-400 mb-1">Tỉ lệ hoàn thành bài</div>
+                        <div class="text-2xl font-bold text-emerald-400">88.4%</div>
+                        <div class="text-[10px] text-slate-400 mt-1">Mục tiêu: 85%</div>
+                    </div>
+                    <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
+                        <div class="text-xs text-slate-400 mb-1">ĐTB Work Chinese Score</div>
+                        <div class="text-2xl font-bold text-amber-400">812 <span class="text-sm font-normal">/ 990</span></div>
+                        <div class="text-[10px] text-emerald-400 mt-1"><i class="fa-solid fa-arrow-up"></i> +8 điểm so với quý trước</div>
+                    </div>
+                    <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
+                        <div class="text-xs text-slate-400 mb-1">Nhân sự đạt chuẩn B2</div>
+                        <div class="text-2xl font-bold text-white">18 <span class="text-sm font-normal">/ 25</span></div>
+                        <div class="text-[10px] text-slate-400 mt-1">Dựa trên Rubric năng lực</div>
                     </div>
                 </div>
 
+                <!-- Main Content: Chart & Table -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Left: Progress Chart -->
+                    <div class="lg:col-span-1 bg-slate-800/40 rounded-xl p-4 border border-slate-700/50">
+                        <div class="flex justify-between items-center mb-4">
+                            <h4 class="text-sm font-bold text-slate-200">Tiến độ điểm số theo tháng</h4>
+                            <select class="bg-slate-700 text-xs border border-slate-600 rounded p-1 text-white outline-none">
+                                <option>6 tháng qua</option>
+                                <option>Năm nay</option>
+                            </select>
+                        </div>
+                        <div class="h-48 flex items-center justify-center">
+                            <canvas id="b2bChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Right: Staff Table -->
+                    <div class="lg:col-span-2 bg-slate-800/40 rounded-xl p-4 border border-slate-700/50">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
+                            <h4 class="text-sm font-bold text-slate-200">Tiến độ nhân sự phòng Sourcing & XNK</h4>
+                            <div class="flex gap-2">
+                                <input type="text" placeholder="Tìm nhân viên..." class="bg-slate-700 text-xs border border-slate-600 rounded p-1.5 text-white outline-none w-32 focus:ring-1 focus:ring-teal-500">
+                                <button class="bg-teal-700 hover:bg-teal-600 text-white text-xs px-2.5 py-1.5 rounded transition"><i class="fa-solid fa-plus"></i> Giao bài</button>
+                            </div>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs">
+                                <thead class="text-slate-400 border-b border-slate-700">
+                                    <tr>
+                                        <th class="pb-2 font-medium">Nhân viên</th>
+                                        <th class="pb-2 font-medium">Hoàn thành</th>
+                                        <th class="pb-2 font-medium">Điểm WCS</th>
+                                        <th class="pb-2 font-medium">Xếp loại</th>
+                                        <th class="pb-2 font-medium text-right">Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-700/50">
+                                    <tr class="hover:bg-slate-800/50 transition">
+                                        <td class="py-2.5 flex items-center gap-2">
+                                            <div class="w-6 h-6 rounded-full bg-teal-700 flex items-center justify-center text-[9px] font-bold">NA</div>
+                                            <div>Nguyễn Văn An <br><span class="text-[10px] text-slate-400">Sourcing Spec</span></div>
+                                        </td>
+                                        <td class="py-2.5">12/15 bài</td>
+                                        <td class="py-2.5 font-bold text-emerald-400">865</td>
+                                        <td class="py-2.5"><span class="bg-emerald-900/50 text-emerald-300 px-1.5 py-0.5 rounded text-[10px] border border-emerald-700/50">Xuất sắc</span></td>
+                                        <td class="py-2.5 text-right"><button class="text-teal-400 hover:text-teal-300" title="Xem chi tiết"><i class="fa-solid fa-eye"></i></button></td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-800/50 transition">
+                                        <td class="py-2.5 flex items-center gap-2">
+                                            <div class="w-6 h-6 rounded-full bg-blue-700 flex items-center justify-center text-[9px] font-bold">TH</div>
+                                            <div>Trần Thị Hoa <br><span class="text-[10px] text-slate-400">XNK Docs</span></div>
+                                        </td>
+                                        <td class="py-2.5">9/15 bài</td>
+                                        <td class="py-2.5 font-bold text-amber-400">790</td>
+                                        <td class="py-2.5"><span class="bg-amber-900/50 text-amber-300 px-1.5 py-0.5 rounded text-[10px] border border-amber-700/50">Khá</span></td>
+                                        <td class="py-2.5 text-right"><button class="text-teal-400 hover:text-teal-300" title="Xem chi tiết"><i class="fa-solid fa-eye"></i></button></td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-800/50 transition">
+                                        <td class="py-2.5 flex items-center gap-2">
+                                            <div class="w-6 h-6 rounded-full bg-purple-700 flex items-center justify-center text-[9px] font-bold">LM</div>
+                                            <div>Lê Minh <br><span class="text-[10px] text-slate-400">Buyer</span></div>
+                                        </td>
+                                        <td class="py-2.5">15/15 bài</td>
+                                        <td class="py-2.5 font-bold text-emerald-400">910</td>
+                                        <td class="py-2.5"><span class="bg-emerald-900/50 text-emerald-300 px-1.5 py-0.5 rounded text-[10px] border border-emerald-700/50">Xuất sắc</span></td>
+                                        <td class="py-2.5 text-right"><button class="text-teal-400 hover:text-teal-300" title="Xem chi tiết"><i class="fa-solid fa-eye"></i></button></td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-800/50 transition">
+                                        <td class="py-2.5 flex items-center gap-2">
+                                            <div class="w-6 h-6 rounded-full bg-rose-700 flex items-center justify-center text-[9px] font-bold">PH</div>
+                                            <div>Phạm Hải <br><span class="text-[10px] text-slate-400">Ops Logistics</span></div>
+                                        </td>
+                                        <td class="py-2.5">4/15 bài</td>
+                                        <td class="py-2.5 font-bold text-rose-400">650</td>
+                                        <td class="py-2.5"><span class="bg-rose-900/50 text-rose-300 px-1.5 py-0.5 rounded text-[10px] border border-rose-700/50">Cần cố gắng</span></td>
+                                        <td class="py-2.5 text-right"><button class="text-teal-400 hover:text-teal-300" title="Xem chi tiết"><i class="fa-solid fa-eye"></i></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-3 flex justify-between items-center text-[10px] text-slate-400">
+                            <span>Hiển thị 4 trên 25 nhân sự</span>
+                            <div class="flex gap-1">
+                                <button class="px-2 py-1 border border-slate-600 rounded hover:bg-slate-700 disabled:opacity-50" disabled>Trước</button>
+                                <button class="px-2 py-1 border border-slate-600 rounded hover:bg-slate-700">Sau</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Features List -->
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-slate-300">
+                    <div class="flex items-start gap-2">
+                        <i class="fa-solid fa-circle-check text-teal-400 mt-0.5"></i>
+                        <span><strong>Giao bài tự động:</strong> Phân bổ module kịch bản chuẩn cho Purchasing, Ops Logistics, Sales.</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <i class="fa-solid fa-circle-check text-teal-400 mt-0.5"></i>
+                        <span><strong>Custom B2B Module:</strong> Thiết kế kịch bản độc quyền theo quy trình SOP riêng của doanh nghiệp.</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <i class="fa-solid fa-circle-check text-teal-400 mt-0.5"></i>
+                        <span><strong>Báo cáo HR tự động:</strong> Xuất dữ liệu định kỳ cho Ban Giám đốc chứng minh ROI đào tạo.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-8">
+                <a href="#bang-gia" class="inline-flex items-center px-6 py-3 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-semibold text-sm transition shadow-md">
+                    Đăng ký License Doanh nghiệp <i class="fa-solid fa-arrow-right ml-2"></i>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- PHÂN TÍCH SWOT & TÁC ĐỘNG KH-XH (SECTION 8 IN DOCS) -->
+    <!-- PHÂN TÍCH SWOT & TÁC ĐỘNG KH-XH -->
     <section id="swot" class="py-16 bg-white border-t border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12">
@@ -751,7 +847,6 @@
                     </p>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -783,7 +878,7 @@
                             <li><i class="fa-solid fa-check text-teal-600 mr-1.5"></i> Đánh giá Work Chinese Score</li>
                         </ul>
                     </div>
-                    <button onclick="alert('Cảm ơn bạn đã quan tâm! Bạn có thể trải nghiệm bản Demo miễn phí ở phía trên.')" class="mt-6 w-full py-2.5 rounded-xl border border-teal-700 text-teal-700 font-semibold text-xs hover:bg-teal-50 transition">Đăng ký trải nghiệm</button>
+                    <button onclick="openPurchaseModal('B2C Pro Monthly')" class="mt-6 w-full py-2.5 rounded-xl border border-teal-700 text-teal-700 font-semibold text-xs hover:bg-teal-50 transition">Đăng ký trải nghiệm</button>
                 </div>
 
                 <!-- Career Pack -->
@@ -803,7 +898,7 @@
                             <li><i class="fa-solid fa-check text-teal-600 mr-1.5"></i> Cập nhật kịch bản mới miễn phí</li>
                         </ul>
                     </div>
-                    <button onclick="alert('Cảm ơn bạn đã quan tâm! Vui lòng chọn gói Career Pack ở phần phía trên.')" class="mt-6 w-full py-2.5 rounded-xl bg-teal-700 text-white font-semibold text-xs hover:bg-teal-800 transition">Mua gói chuyên ngành</button>
+                    <button onclick="openPurchaseModal('Career Pack')" class="mt-6 w-full py-2.5 rounded-xl bg-teal-700 text-white font-semibold text-xs hover:bg-teal-800 transition">Mua gói chuyên ngành</button>
                 </div>
 
                 <!-- B2B License -->
@@ -822,7 +917,7 @@
                             <li><i class="fa-solid fa-check text-teal-600 mr-1.5"></i> Báo cáo tiến bộ nhân sự hàng tháng</li>
                         </ul>
                     </div>
-                    <button onclick="alert('Vui lòng sử dụng Công cụ tính dự toán bên dưới hoặc liên hệ Hotline B2B: 0928 948 763')" class="mt-6 w-full py-2.5 rounded-xl border border-slate-300 text-slate-700 font-semibold text-xs hover:bg-slate-50 transition">Đăng ký License</button>
+                    <button onclick="openPurchaseModal('B2B License')" class="mt-6 w-full py-2.5 rounded-xl border border-slate-300 text-slate-700 font-semibold text-xs hover:bg-slate-50 transition">Đăng ký License</button>
                 </div>
 
                 <!-- Custom B2B Module -->
@@ -841,9 +936,8 @@
                             <li><i class="fa-solid fa-check text-teal-400 mr-1.5"></i> Đội ngũ chuyên gia thẩm định 1-1</li>
                         </ul>
                     </div>
-                    <button onclick="alert('Yêu cầu báo giá Custom Module đã gửi. Chủ nhiệm đề tài Nguyễn Ngọc Phương Thảo sẽ liên hệ lại với bạn!')" class="mt-6 w-full py-2.5 rounded-xl bg-teal-600 text-white font-semibold text-xs hover:bg-teal-700 transition">Yêu cầu tư vấn</button>
+                    <button onclick="openPurchaseModal('Custom B2B Module')" class="mt-6 w-full py-2.5 rounded-xl bg-teal-600 text-white font-semibold text-xs hover:bg-teal-700 transition">Yêu cầu tư vấn</button>
                 </div>
-
             </div>
 
             <!-- CÔNG CỤ TÍNH DỰ TOÁN B2B / B2C INTERACTIVE CALCULATOR -->
@@ -892,7 +986,7 @@
         </div>
     </section>
 
-    <!-- TIẾN ĐỘ DỰ ÁN 10 THÁNG & MỐC KIỂM SOÁT MILESTONES (SECTION 10 IN DOCS) -->
+    <!-- TIẾN ĐỘ DỰ ÁN 10 THÁNG & MỐC KIỂM SOÁT MILESTONES -->
     <section id="tiendo" class="py-16 bg-white border-t border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12">
@@ -1091,6 +1185,47 @@
         </div>
     </section>
 
+    <!-- MODAL MUA HÀNG / ĐĂNG KÝ -->
+    <div id="purchase-modal" class="fixed inset-0 z-[100] bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl transform transition-all scale-95 opacity-0" id="modal-content">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-bold text-slate-900" id="modal-title">Đăng ký gói dịch vụ</h3>
+                <button onclick="closePurchaseModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            <form id="purchase-form" onsubmit="handlePurchaseSubmit(event)">
+                <div class="space-y-3 text-sm">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Gói đăng ký</label>
+                        <input type="text" id="modal-package-name" class="w-full bg-slate-100 border border-slate-200 rounded-lg p-2.5 text-slate-700 font-medium focus:outline-none" readonly>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Họ và tên</label>
+                        <input type="text" required placeholder="Nguyễn Văn A" class="w-full border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-teal-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Email / Số điện thoại</label>
+                        <input type="text" required placeholder="email@example.com hoặc 09xx..." class="w-full border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-teal-500 focus:outline-none">
+                    </div>
+                    <div class="bg-teal-50 p-3 rounded-lg border border-teal-100 text-xs text-teal-800">
+                        <i class="fa-solid fa-circle-info mr-1"></i> Đây là form đăng ký Demo. Chúng tôi sẽ liên hệ tư vấn trong 24h.
+                    </div>
+                </div>
+                <div class="mt-5 flex gap-3">
+                    <button type="button" onclick="closePurchaseModal()" class="flex-1 py-2.5 border border-slate-300 rounded-xl text-slate-700 font-semibold text-sm hover:bg-slate-50 transition">Hủy</button>
+                    <button type="submit" class="flex-1 py-2.5 bg-teal-700 text-white rounded-xl font-semibold text-sm hover:bg-teal-800 transition">Xác nhận</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-5 right-5 z-[110] transform translate-y-20 opacity-0 transition-all duration-300">
+        <div class="bg-slate-900 text-white px-5 py-3 rounded-xl shadow-lg flex items-center gap-3">
+            <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+            <span id="toast-message" class="text-sm font-medium">Thao tác thành công!</span>
+        </div>
+    </div>
+
     <!-- FOOTER -->
     <footer class="bg-slate-900 text-slate-400 py-12 text-xs border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1143,7 +1278,7 @@
 
     <!-- JAVASCRIPT FOR SIMULATOR & INTERACTION -->
     <script>
-        // Scenarios Data
+        // --- 1. SCENARIO DATA ---
         const scenarios = {
             '1688': {
                 title: '1. Sourcing 1688 - Đàm phán giảm MOQ & Giảm giá mẫu',
@@ -1186,14 +1321,86 @@
                     "我精通商务汉语，能独立与中国工厂谈判 MOQ 和付款条件。",
                     "我曾经为公司降低了 15% 的采购成本。"
                 ]
+            },
+            'oem': {
+                title: '4. Sản xuất OEM - Xử lý lỗi chất lượng lô hàng',
+                initialMsg: {
+                    sender: 'ai',
+                    title: 'Quản lý nhà máy (Trung Quốc)',
+                    text: '我们收到你们的反馈，发现这批零件有 10% 的划痕。请问你们希望我们怎么处理？',
+                    trans: '(Chúng tôi đã nhận phản hồi của bạn, phát hiện lô linh kiện này có 10% bị xước. Bạn muốn chúng tôi xử lý thế nào?)'
+                },
+                replies: [
+                    "我们希望你们能补发 10% 的良品，并且承担这次的运费。",
+                    "如果下批订单加大，能不能保证不良率降到 2% 以下？",
+                    "请提供一下质检报告，我们会安排第三方验货。"
+                ]
             }
         };
 
         let currentScenarioKey = '1688';
         let isVoiceMode = false;
 
+        // --- 2. CHART JS INIT ---
+        let b2bChartInstance = null;
+
+        function initChart() {
+            const ctx = document.getElementById('b2bChart').getContext('2d');
+            if (b2bChartInstance) {
+                b2bChartInstance.destroy();
+            }
+            b2bChartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6'],
+                    datasets: [{
+                        label: 'Điểm TB Work Chinese Score',
+                        data: [650, 680, 710, 750, 790, 812],
+                        borderColor: '#10b981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#10b981',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 4,
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#1e293b',
+                            titleColor: '#fff',
+                            bodyColor: '#cbd5e1',
+                            borderColor: '#334155',
+                            borderWidth: 1
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 500,
+                            max: 900,
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: { color: '#94a3b8', font: { size: 10 } }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#94a3b8', font: { size: 10 } }
+                        }
+                    }
+                }
+            });
+        }
+
+        // --- 3. SIMULATOR LOGIC ---
         window.onload = function() {
             loadScenario(currentScenarioKey);
+            initChart();
         };
 
         function loadScenario(key) {
@@ -1274,7 +1481,8 @@
             const feedbackSuggestions = [
                 "✅ Dùng từ chuẩn ngành: 试订单 (Đơn hàng mẫu). Ngữ pháp tự nhiên 98/100.",
                 "💡 Gợi ý thương mại: Bạn có thể nhấn mạnh điều khoản 付款方式 (Phương thức thanh toán) để tăng sức thuyết phục.",
-                "✅ Hoàn thành mục tiêu giao tiếp. Phát âm voice simulated: 95/100."
+                "✅ Hoàn thành mục tiêu giao tiếp. Phát âm voice simulated: 95/100.",
+                "💡 Gợi ý: Nên thêm từ '麻烦您' để thể hiện sự lịch sự trong đàm phán."
             ];
             const randomFeedback = feedbackSuggestions[Math.floor(Math.random() * feedbackSuggestions.length)];
 
@@ -1294,6 +1502,9 @@
                 } else if (currentScenarioKey === 'interview') {
                     aiResponse = "很好，你的经验很符合我们的要求。请问你对薪资有什么期望？";
                     aiTrans = "(Rất tốt, kinh nghiệm của bạn rất phù hợp yêu cầu của chúng tôi. Bạn có kì vọng gì về mức lương?)";
+                } else if (currentScenarioKey === 'oem') {
+                    aiResponse = "好的，补发 10% 没问题，但运费我们各承担一半，可以吗？";
+                    aiTrans = "(Được, bù 10% thì không vấn đề, nhưng cước vận chuyển mỗi bên chịu một nửa, được không?)";
                 }
 
                 addMessage('ai', 'Đối tác AI', aiResponse, aiTrans);
@@ -1315,6 +1526,7 @@
             }
         }
 
+        // --- 4. PACKS FILTER LOGIC ---
         function filterPacks(cat) {
             const cards = document.querySelectorAll('.pack-card');
             const btns = document.querySelectorAll('.pack-filter-btn');
@@ -1328,13 +1540,14 @@
 
             cards.forEach(card => {
                 if (cat === 'all' || card.getAttribute('data-cat') === cat) {
-                    card.style.display = 'block';
+                    card.style.display = 'flex';
                 } else {
                     card.style.display = 'none';
                 }
             });
         }
 
+        // --- 5. CALCULATOR LOGIC ---
         function calculateCost() {
             const type = document.getElementById('calc-type').value;
             const count = parseInt(document.getElementById('calc-range').value);
@@ -1371,6 +1584,7 @@
             totalPriceEl.innerText = price.toLocaleString('vi-VN') + ' VNĐ';
         }
 
+        // --- 6. TIMELINE LOGIC ---
         function toggleTimeline(id) {
             const detail = document.getElementById(`detail-${id}`);
             const arrow = document.getElementById(`arrow-${id}`);
@@ -1384,10 +1598,57 @@
             }
         }
 
+        // --- 7. MOBILE MENU LOGIC ---
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         });
+
+        // --- 8. PURCHASE MODAL LOGIC ---
+        function openPurchaseModal(packageName) {
+            const modal = document.getElementById('purchase-modal');
+            const content = document.getElementById('modal-content');
+            document.getElementById('modal-package-name').value = packageName;
+            modal.classList.remove('hidden');
+            // Trigger reflow
+            void modal.offsetWidth; 
+            content.classList.remove('scale-95', 'opacity-0');
+            content.classList.add('scale-100', 'opacity-100');
+        }
+
+        function closePurchaseModal() {
+            const modal = document.getElementById('purchase-modal');
+            const content = document.getElementById('modal-content');
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 200);
+        }
+
+        function handlePurchaseSubmit(event) {
+            event.preventDefault();
+            closePurchaseModal();
+            showToast("Đăng ký thành công! Chúng tôi sẽ sớm liên hệ với bạn.");
+            document.getElementById('purchase-form').reset();
+        }
+
+        // --- 9. TOAST & EXPORT LOGIC ---
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.innerText = message;
+            
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        function showExportReport() {
+            showToast("Đang xuất báo cáo HR dưới dạng PDF...");
+        }
     </script>
 </body>
 </html>
